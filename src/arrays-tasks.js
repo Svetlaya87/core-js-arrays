@@ -182,8 +182,26 @@ function getAverage(arr) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  const res = [];
+  if (arr.length === 1) {
+    return true;
+  }
+  arr.every(function compare(_, i) {
+    if (i < arr.length - 1) {
+      if (arr[i].length === arr[i + 1].length) {
+        res.push(1);
+        return arr[i].length === arr[i + 1].length;
+      }
+      res.push(0);
+      return undefined;
+    }
+    return undefined;
+  });
+
+  return (
+    res.filter((el) => el === 1).length > res.filter((el) => el === 0).length
+  );
 }
 
 /**
