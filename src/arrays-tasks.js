@@ -547,10 +547,15 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
-}
+function getHexRGBValues(arr) {
+  const zero = ['0', '0', '0', '0', '0', '0'];
+  let el2 = arr.map((el) => el.toString(16).toUpperCase());
+  el2 = el2.map((el) => {
+    return zero.slice(0, zero.length - el.length).join('');
+  });
 
+  return arr.map((el, i) => `#${el2[i]}${el.toString(16).toUpperCase()}`);
+}
 /**
  * Returns the n largest values from the specified array
  *
